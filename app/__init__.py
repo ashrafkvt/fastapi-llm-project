@@ -1,0 +1,1 @@
+from app.tasks import send_welcome_email

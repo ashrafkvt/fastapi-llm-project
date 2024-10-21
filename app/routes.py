@@ -2,9 +2,15 @@ from fastapi import APIRouter, HTTPException
 from app.models import UserModel
 from app.database import db
 from app.schemas import UserSchema
+from .tasks import send_welcome_email
 from bson import ObjectId
 
 router = APIRouter()
+
+
+@router.get("/")
+async def read_main():
+    return {"msg": "Hello World"}
 
 
 # Add a new user
@@ -13,6 +19,10 @@ async def create_user(user: UserModel):
     user_dict = user.model_dump()
     result = db.users.insert_one(user_dict)
     user_dict["_id"] = str(result.inserted_id)
+
+    # Trigger the background task (send welcome email)
+    send_welcome_email.delay(user.email)
+
     return user_dict
 
 
