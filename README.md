@@ -1,4 +1,4 @@
-# FastAPI App with MongoDB, Celery, Redis & OpenAI Integration
+# FastAPI App with MongoDB, Celery, Redis & Groq Integration
 
 This project is a FastAPI-based web application utilizing MongoDB as a NoSQL database, with Celery and Redis for background task processing. The app also integrates OpenAI’s LLM to provide AI-driven responses. Caching is implemented using Memcached to optimize performance.
 
