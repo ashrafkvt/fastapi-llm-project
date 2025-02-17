@@ -11,3 +11,7 @@ class UserSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class PromptRequest(BaseModel):
+    prompt: str
